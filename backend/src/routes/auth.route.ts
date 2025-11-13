@@ -1,7 +1,21 @@
-import express from 'express';
+import express from "express";
 const router = express.Router();
-import {auth} from '../controllers/auth.controller';
+import { registerSchema, loginSchema } from "../schemas/authSchemas";
+import { validate } from "../middleware/validate";
+import { verifySession } from "../middleware/verifysession";
 
-router.post('/auth', auth);
+import {
+  register,
+  reset,
+  login,
+  logout,
+  forgot,
+} from "../controllers/auth.controller";
+
+router.post("/auth/register", validate(registerSchema), register);
+router.post("/auth/login", validate(loginSchema), login);
+router.post("/auth/logout", verifySession, logout);
+router.post("/auth/forgot", forgot);
+router.post("/auth/reset", reset);
 
 export default router;

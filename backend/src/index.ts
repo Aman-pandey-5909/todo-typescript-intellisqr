@@ -3,9 +3,11 @@ import dotenv from 'dotenv';
 dotenv.config();
 import cors from 'cors';
 import morgan from 'morgan';
+import cp from 'cookie-parser'
 
 import connectDB from './utils/connectDB';
 import authRoutes from './routes/auth.route'
+import todoRoutes from './routes/todo.route'
 import { notFound } from './middleware/not-found';
 import { errorHandler } from './middleware/error-handler';
 
@@ -20,9 +22,11 @@ app.use(cors(
 ));
 app.use(morgan('dev'));
 app.use(express.json());
+app.use(cp());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api', authRoutes);
+app.use('/api', todoRoutes);
 app.use(notFound);
 app.use(errorHandler); 
 
