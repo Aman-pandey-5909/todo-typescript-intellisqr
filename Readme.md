@@ -1,5 +1,4 @@
-# TODO LIST  - INTELLISQR ASSIGNMENT
-##  I have made this Full Stack ToDo List as IntelliSQR FullStack Assignment
+# TODO LIST 
 A Lightweight ToDo List with Minimalistic UI
 
 #### Tech Stacks Used
